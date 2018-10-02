@@ -14,8 +14,8 @@ public class BaseEntity <T extends BaseEntity>{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private Boolean available;
+    protected Long id;
+    protected Boolean available;
 
     public BaseEntity() {
     }
@@ -24,18 +24,18 @@ public class BaseEntity <T extends BaseEntity>{
         return id;
     }
 
-    public BaseEntity<T> setId(Long id) {
+    public T setId(Long id) {
         this.id = id;
-        return this;
+        return (T)this;
     }
 
     public Boolean getAvailable() {
         return available;
     }
 
-    public BaseEntity<T> setAvailable(Boolean available) {
+    public T setAvailable(Boolean available) {
         this.available = available;
-        return this;
+        return (T) this;
     }
 
     @Override
