@@ -17,15 +17,7 @@ public interface CommunityService {
 
     Community save(Community community);
 
-    Community save(String communityJson);
-
-    Community save(String communityJson, MultipartFile multipartFile);
-
-    Community update(String communityJson, MultipartFile multipartFile);
-
     Community update(Community community);
-
-    Community update(String communityJson);
 
     Boolean delete(Long id);
 
