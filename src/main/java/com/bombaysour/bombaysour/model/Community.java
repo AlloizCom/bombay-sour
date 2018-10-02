@@ -1,5 +1,6 @@
 package com.bombaysour.bombaysour.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
 @Entity
@@ -7,7 +8,8 @@ public class Community extends BaseEntity<Community>{
 
     private String articleTitle;
 
-    // TODO: 02/10/2018  add field for texts
+    @Column(columnDefinition = "LONGTEXT")
+    private String text;
 
     public Community() {
     }
@@ -21,10 +23,20 @@ public class Community extends BaseEntity<Community>{
         return this;
     }
 
+    public String getText() {
+        return text;
+    }
+
+    public Community setText(String text) {
+        this.text = text;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "Community{" +
                 "articleTitle='" + articleTitle + '\'' +
+                ", text='" + text + '\'' +
                 ", id=" + id +
                 ", available=" + available +
                 '}';
