@@ -1,7 +1,9 @@
 package com.bombaysour.bombaysour.model;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 
+@Entity
 public class Team extends BaseEntity<Team>{
 
     private String name;
