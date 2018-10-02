@@ -89,8 +89,6 @@ public class StoryServiceImpl implements StoryService {
         if (multipartFile != null && !multipartFile.isEmpty())
             story.setVideoUrl(fileBuilder.saveFile(multipartFile));
         return save(storyRepository.findOne(story.getId())
-                .setAvailable(story.getAvailable())
-                .setVideoUrl(story.getVideoUrl())
                 .setName(story.getName())
                 .setAvailable(story.getAvailable())
         );
@@ -103,8 +101,6 @@ public class StoryServiceImpl implements StoryService {
         LOGGER.info(story);
         LOGGER.info("---------------------");
         return save(storyRepository.findOne(story.getId())
-                .setAvailable(story.getAvailable())
-                .setVideoUrl(story.getVideoUrl())
                 .setName(story.getName())
                 .setAvailable(story.getAvailable())
         );
