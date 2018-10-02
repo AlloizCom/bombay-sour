@@ -7,8 +7,8 @@ public class CommunityDto {
 
     protected Long id;
     protected Boolean available;
-    private String articleTitle;
-    private String text;
+    protected String articleTitle;
+    protected String text;
 
     public CommunityDto() {
     }

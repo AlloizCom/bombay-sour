@@ -7,8 +7,8 @@ public class StoryDto {
 
     protected Long id;
     protected Boolean available;
-    private String name;
-    private String videoUrl;
+    protected String name;
+    protected String videoUrl;
 
     public StoryDto() {
     }

@@ -3,21 +3,21 @@ package com.bombaysour.bombaysour.dto;
 import com.bombaysour.bombaysour.dto.utils.annotations.Dto;
 
 @Dto
-public class TeamDto {
+public class PlatformDto {
 
     protected Long id;
     protected Boolean available;
-    protected String name;
     protected String image;
+    protected String text;
 
-    public TeamDto() {
+    public PlatformDto() {
     }
 
     public Long getId() {
         return id;
     }
 
-    public TeamDto setId(Long id) {
+    public PlatformDto setId(Long id) {
         this.id = id;
         return this;
     }
@@ -26,17 +26,8 @@ public class TeamDto {
         return available;
     }
 
-    public TeamDto setAvailable(Boolean available) {
+    public PlatformDto setAvailable(Boolean available) {
         this.available = available;
-        return this;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public TeamDto setName(String name) {
-        this.name = name;
         return this;
     }
 
@@ -44,18 +35,27 @@ public class TeamDto {
         return image;
     }
 
-    public TeamDto setImage(String image) {
+    public PlatformDto setImage(String image) {
         this.image = image;
+        return this;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public PlatformDto setText(String text) {
+        this.text = text;
         return this;
     }
 
     @Override
     public String toString() {
-        return "TeamDto{" +
+        return "PlatformDto{" +
                 "id=" + id +
                 ", available=" + available +
-                ", name='" + name + '\'' +
                 ", image='" + image + '\'' +
+                ", text='" + text + '\'' +
                 '}';
     }
 }
