@@ -28,7 +28,7 @@ public class PlatformController {
     private PlatformService platformService;
 
     @Autowired
-    private PlatformRepository platformRepository
+    private PlatformRepository platformRepository;
 
     @GetMapping(value = "/get-image/{id}")
     private ResponseEntity<String> getMainImage(@PathVariable Long id) {
