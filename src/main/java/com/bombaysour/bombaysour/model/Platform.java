@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 @Entity
 public class Platform extends BaseEntity<Platform>{
 
+    @Column(columnDefinition = "LONGTEXT")
     private String image;
 
     @Column(columnDefinition = "LONGTEXT")
