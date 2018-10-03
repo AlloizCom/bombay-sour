@@ -25,7 +25,8 @@ public class ApplicationWebMvcConfig extends WebMvcConfigurerAdapter {
                 .addResourceLocations(PATH)
                 .setCacheControl(CacheControl.maxAge(365, TimeUnit.DAYS))
                 .resourceChain(true)
-                .addResolver(new VersionResourceResolver().addContentVersionStrategy("/**"));
+                .addResolver(new VersionResourceResolver().addContentVersionStrategy("/**"))
+        ;
     }
 
 }
