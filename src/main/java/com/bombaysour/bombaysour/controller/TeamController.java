@@ -1,5 +1,6 @@
 package com.bombaysour.bombaysour.controller;
 
+import com.bombaysour.bombaysour.controller.exceptions.ImageIsNotAvailableException;
 import com.bombaysour.bombaysour.dto.TeamShortDto;
 import com.bombaysour.bombaysour.repository.TeamRepository;
 import com.bombaysour.bombaysour.service.TeamService;
@@ -31,8 +32,15 @@ public class TeamController {
 
     @GetMapping(value = "/get-image/{id}")
     private ResponseEntity<String> getMainImage(@PathVariable Long id) {
-        return ResponseEntity.ok().cacheControl(maxAge(31556926, TimeUnit.SECONDS).cachePublic())
-                .body(teamRepository.findByAvailableAndId(true,id).getImage());
+        String image = "";
+        try {
+            image = teamRepository.findByAvailableAndId(true,id).getImage();
+        } catch (Exception e){
+            throw new ImageIsNotAvailableException("Image for this team is not available. Team id: " + id);
+        }
+        return ResponseEntity.ok().cacheControl(maxAge(31556926, TimeUnit.SECONDS)
+                .cachePublic())
+                .body(image);
     }
 
     @GetMapping("/find-all")
