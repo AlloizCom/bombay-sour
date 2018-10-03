@@ -12,5 +12,4 @@ public interface TeamRepository extends JpaRepository<Team,Long> {
     List<Team> findAllByAvailable(Boolean available);
 
     Team findByAvailableAndId(Boolean available, Long id);
-
 }

@@ -1,6 +1,7 @@
 package com.bombaysour.bombaysour.controller;
 
 import com.bombaysour.bombaysour.dto.TeamShortDto;
+import com.bombaysour.bombaysour.repository.TeamRepository;
 import com.bombaysour.bombaysour.service.TeamService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +11,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 import static com.bombaysour.bombaysour.dto.utils.builder.Builder.map;
+import static org.springframework.http.CacheControl.maxAge;
 
 @RestController
 @RequestMapping("/team")
@@ -22,6 +25,15 @@ public class TeamController {
 
     @Autowired
     private TeamService teamService;
+
+    @Autowired
+    private TeamRepository teamRepository;
+
+    @GetMapping(value = "/get-image/{id}")
+    private ResponseEntity<String> getMainImage(@PathVariable Long id) {
+        return ResponseEntity.ok().cacheControl(maxAge(31556926, TimeUnit.SECONDS).cachePublic())
+                .body(teamRepository.findByAvailableAndId(true,id).getImage());
+    }
 
     @GetMapping("/find-all")
     private ResponseEntity<List<TeamShortDto>> findAll() {
