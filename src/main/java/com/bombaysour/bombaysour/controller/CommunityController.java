@@ -48,12 +48,12 @@ public class CommunityController {
     }
 
     @PostMapping("/save")
-    private ResponseEntity<CommunityDto> save(@RequestBody CommunityDto callback) {
+    private ResponseEntity<CommunityDto> save(@RequestBody CommunityDto community) {
         LOGGER.info("---------------------------Community---------------------------");
-        LOGGER.info(callback);
+        LOGGER.info(community);
         LOGGER.info("---------------------------Community---------------------------");
         return ResponseEntity
-                .ok(map(communityService.save(map(callback, Community.class)), CommunityDto.class));
+                .ok(map(communityService.save(map(community, Community.class)), CommunityDto.class));
     }
 
     @PostMapping("/update")
