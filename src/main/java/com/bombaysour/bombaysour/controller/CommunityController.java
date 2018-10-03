@@ -17,7 +17,7 @@ import static com.bombaysour.bombaysour.dto.utils.builder.Builder.map;
 @RequestMapping("/community")
 public class CommunityController {
 
-    private static final Logger LOGGER = Logger.getLogger(TeamController.class);
+    private static final Logger LOGGER = Logger.getLogger(CommunityService.class);
 
     @Autowired
     private CommunityService communityService;
