@@ -24,7 +24,7 @@ public class ApplicationWebMvcConfig extends WebMvcConfigurerAdapter {
         registry.addResourceHandler("/resources/**")
                 .addResourceLocations(PATH)
                 .setCacheControl(CacheControl.maxAge(365, TimeUnit.DAYS))
-                .resourceChain(false)
+                .resourceChain(true)
                 .addResolver(new VersionResourceResolver().addContentVersionStrategy("/**"));
     }
 
