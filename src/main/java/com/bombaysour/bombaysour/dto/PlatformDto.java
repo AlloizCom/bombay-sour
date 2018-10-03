@@ -7,7 +7,7 @@ public class PlatformDto {
 
     protected Long id;
     protected Boolean available;
-    protected String image;
+//    protected String image;
     protected String text;
 
     public PlatformDto() {
@@ -31,14 +31,14 @@ public class PlatformDto {
         return this;
     }
 
-    public String getImage() {
-        return image;
-    }
-
-    public PlatformDto setImage(String image) {
-        this.image = image;
-        return this;
-    }
+//    public String getImage() {
+//        return image;
+//    }
+//
+//    public PlatformDto setImage(String image) {
+//        this.image = image;
+//        return this;
+//    }
 
     public String getText() {
         return text;
@@ -54,7 +54,7 @@ public class PlatformDto {
         return "PlatformDto{" +
                 "id=" + id +
                 ", available=" + available +
-                ", image='" + image + '\'' +
+//                ", image='" + image + '\'' +
                 ", text='" + text + '\'' +
                 '}';
     }
