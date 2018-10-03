@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 public class Team extends BaseEntity<Team>{
 
     private String name;
+    @Column(columnDefinition = "LONGTEXT")
     private String image;
 
     @Column(columnDefinition = "LONGTEXT")
