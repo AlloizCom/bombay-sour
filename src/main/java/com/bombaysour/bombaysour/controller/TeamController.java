@@ -30,7 +30,7 @@ public class TeamController {
     @Autowired
     private TeamRepository teamRepository;
 
-    @GetMapping(value = "/get-image/{id}")
+    @GetMapping(value = "/get-image/{id}",produces = "text/plain")
     private ResponseEntity<String> getMainImage(@PathVariable Long id) {
         String image = "";
         try {
