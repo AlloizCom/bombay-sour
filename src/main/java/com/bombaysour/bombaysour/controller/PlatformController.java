@@ -1,6 +1,8 @@
 package com.bombaysour.bombaysour.controller;
 
+import com.bombaysour.bombaysour.controller.exceptions.ImageIsNotAvailableException;
 import com.bombaysour.bombaysour.dto.PlatformShortDto;
+import com.bombaysour.bombaysour.repository.PlatformRepository;
 import com.bombaysour.bombaysour.service.PlatformService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +12,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 import static com.bombaysour.bombaysour.dto.utils.builder.Builder.map;
+import static org.springframework.http.CacheControl.maxAge;
 
 @RestController
 @RequestMapping("/platform")
@@ -22,6 +26,22 @@ public class PlatformController {
 
     @Autowired
     private PlatformService platformService;
+
+    @Autowired
+    private PlatformRepository platformRepository
+
+    @GetMapping(value = "/get-image/{id}")
+    private ResponseEntity<String> getMainImage(@PathVariable Long id) {
+        String image = "";
+        try {
+            image = platformRepository.findByAvailableAndId(true,id).getImage();
+        } catch (Exception e){
+            throw new ImageIsNotAvailableException("Image for this platform is not available. Platform id: " + id);
+        }
+        return ResponseEntity.ok().cacheControl(maxAge(31556926, TimeUnit.SECONDS)
+                .cachePublic())
+                .body(image);
+    }
 
     @GetMapping("/find-all")
     private ResponseEntity<List<PlatformShortDto>> findAll() {
