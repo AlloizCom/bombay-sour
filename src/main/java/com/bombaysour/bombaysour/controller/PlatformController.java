@@ -1,7 +1,11 @@
 package com.bombaysour.bombaysour.controller;
 
 import com.bombaysour.bombaysour.controller.exceptions.ImageIsNotAvailableException;
+import com.bombaysour.bombaysour.dto.CommunityDto;
+import com.bombaysour.bombaysour.dto.PlatformDto;
 import com.bombaysour.bombaysour.dto.PlatformShortDto;
+import com.bombaysour.bombaysour.model.Community;
+import com.bombaysour.bombaysour.model.Platform;
 import com.bombaysour.bombaysour.repository.PlatformRepository;
 import com.bombaysour.bombaysour.service.PlatformService;
 import org.apache.log4j.Logger;
@@ -69,30 +73,48 @@ public class PlatformController {
                 .findOne(id), PlatformShortDto.class), HttpStatus.OK);
     }
 
+//    @PostMapping("/save")
+//    private ResponseEntity<PlatformShortDto> save(@RequestParam String platformJson,
+//                                              @RequestParam(required = false) MultipartFile multipartFile) {
+//        LOGGER.info("---------------------------Platform---------------------------");
+//        LOGGER.info(platformJson);
+//        LOGGER.info(multipartFile);
+//        LOGGER.info("---------------------------Platform---------------------------");
+//        return ResponseEntity.ok(map(platformService.save(platformJson, multipartFile), PlatformShortDto.class));
+//    }
+
+//    @PostMapping("/update")
+//    private ResponseEntity<PlatformShortDto> update(@RequestParam String platformJson,
+//                                                    @RequestParam(required = false) MultipartFile multipartFile) {
+//        LOGGER.info("---------------------------Platform---------------------------");
+//        LOGGER.info(platformJson);
+//        LOGGER.info(multipartFile);
+//        LOGGER.info("---------------------------Platform---------------------------");
+//        if (multipartFile != null && !multipartFile.isEmpty()) {
+//            LOGGER.info("multipart file not null");
+//            return ResponseEntity.ok(map(platformService.update(platformJson, multipartFile), PlatformShortDto.class));
+//        } else {
+//            LOGGER.info("multipart file is null!");
+//            return ResponseEntity.ok(map(platformService.update(platformJson), PlatformShortDto.class));
+//        }
+//    }
+
     @PostMapping("/save")
-    private ResponseEntity<PlatformShortDto> save(@RequestParam String platformJson,
-                                              @RequestParam(required = false) MultipartFile multipartFile) {
+    private ResponseEntity<PlatformDto> save(@RequestBody PlatformDto platformJson) {
         LOGGER.info("---------------------------Platform---------------------------");
         LOGGER.info(platformJson);
-        LOGGER.info(multipartFile);
         LOGGER.info("---------------------------Platform---------------------------");
-        return ResponseEntity.ok(map(platformService.save(platformJson, multipartFile), PlatformShortDto.class));
+        return ResponseEntity
+                .ok(map(platformService.save(map(platformJson, Platform.class)), PlatformDto.class));
     }
 
     @PostMapping("/update")
-    private ResponseEntity<PlatformShortDto> update(@RequestParam String platformJson,
-                                                    @RequestParam(required = false) MultipartFile multipartFile) {
+    private ResponseEntity<PlatformDto> update(@RequestBody PlatformDto platformJson) {
         LOGGER.info("---------------------------Platform---------------------------");
         LOGGER.info(platformJson);
-        LOGGER.info(multipartFile);
         LOGGER.info("---------------------------Platform---------------------------");
-        if (multipartFile != null && !multipartFile.isEmpty()) {
-            LOGGER.info("multipart file not null");
-            return ResponseEntity.ok(map(platformService.update(platformJson, multipartFile), PlatformShortDto.class));
-        } else {
-            LOGGER.info("multipart file is null!");
-            return ResponseEntity.ok(map(platformService.update(platformJson), PlatformShortDto.class));
-        }
+        return ResponseEntity
+                .ok(map(platformService.update(map(platformJson, Platform.class)), PlatformDto.class));
     }
 
     @GetMapping("/delete/{id}")

@@ -1,7 +1,9 @@
 package com.bombaysour.bombaysour.controller;
 
 import com.bombaysour.bombaysour.controller.exceptions.ImageIsNotAvailableException;
+import com.bombaysour.bombaysour.dto.TeamDto;
 import com.bombaysour.bombaysour.dto.TeamShortDto;
+import com.bombaysour.bombaysour.model.Team;
 import com.bombaysour.bombaysour.repository.TeamRepository;
 import com.bombaysour.bombaysour.service.TeamService;
 import org.apache.log4j.Logger;
@@ -69,30 +71,48 @@ public class TeamController {
                 .findOne(id), TeamShortDto.class), HttpStatus.OK);
     }
 
+//    @PostMapping("/save")
+//    private ResponseEntity<TeamShortDto> save(@RequestParam String teamJson,
+//                                              @RequestParam(required = false) MultipartFile multipartFile) {
+//        LOGGER.info("---------------------------Team---------------------------");
+//        LOGGER.info(teamJson);
+//        LOGGER.info(multipartFile);
+//        LOGGER.info("---------------------------Team---------------------------");
+//        return ResponseEntity.ok(map(teamService.save(teamJson, multipartFile), TeamShortDto.class));
+//    }
+
+//    @PostMapping("/update")
+//    private ResponseEntity<TeamShortDto> update(@RequestParam String filmJson,
+//                                                @RequestParam(required = false) MultipartFile multipartFile) {
+//        LOGGER.info("---------------------------Team---------------------------");
+//        LOGGER.info(filmJson);
+//        LOGGER.info(multipartFile);
+//        LOGGER.info("---------------------------Team---------------------------");
+//        if (multipartFile != null && !multipartFile.isEmpty()) {
+//            LOGGER.info("multipart file not null");
+//            return ResponseEntity.ok(map(teamService.update(filmJson, multipartFile), TeamShortDto.class));
+//        } else {
+//            LOGGER.info("multipart file is null!");
+//            return ResponseEntity.ok(map(teamService.update(filmJson), TeamShortDto.class));
+//        }
+//    }
+
     @PostMapping("/save")
-    private ResponseEntity<TeamShortDto> save(@RequestParam String teamJson,
-                                              @RequestParam(required = false) MultipartFile multipartFile) {
-        LOGGER.info("---------------------------Team---------------------------");
+    private ResponseEntity<TeamDto> save(@RequestBody TeamDto teamJson) {
+        LOGGER.info("---------------------------Platform---------------------------");
         LOGGER.info(teamJson);
-        LOGGER.info(multipartFile);
-        LOGGER.info("---------------------------Team---------------------------");
-        return ResponseEntity.ok(map(teamService.save(teamJson, multipartFile), TeamShortDto.class));
+        LOGGER.info("---------------------------Platform---------------------------");
+        return ResponseEntity
+                .ok(map(teamService.save(map(teamJson, Team.class)), TeamDto.class));
     }
 
     @PostMapping("/update")
-    private ResponseEntity<TeamShortDto> update(@RequestParam String filmJson,
-                                                @RequestParam(required = false) MultipartFile multipartFile) {
-        LOGGER.info("---------------------------Team---------------------------");
-        LOGGER.info(filmJson);
-        LOGGER.info(multipartFile);
-        LOGGER.info("---------------------------Team---------------------------");
-        if (multipartFile != null && !multipartFile.isEmpty()) {
-            LOGGER.info("multipart file not null");
-            return ResponseEntity.ok(map(teamService.update(filmJson, multipartFile), TeamShortDto.class));
-        } else {
-            LOGGER.info("multipart file is null!");
-            return ResponseEntity.ok(map(teamService.update(filmJson), TeamShortDto.class));
-        }
+    private ResponseEntity<TeamDto> update(@RequestBody TeamDto team) {
+        LOGGER.info("---------------------------Community---------------------------");
+        LOGGER.info(team);
+        LOGGER.info("---------------------------Community---------------------------");
+        return ResponseEntity
+                .ok(map(teamService.update(map(team, Team.class)), TeamDto.class));
     }
 
     @GetMapping("/delete/{id}")
