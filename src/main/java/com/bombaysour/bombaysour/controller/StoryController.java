@@ -77,7 +77,7 @@ public class StoryController {
         }
     }
 
-    @DeleteMapping("/delete/{id}")
+    @GetMapping("/delete/{id}")
     private ResponseEntity<Boolean> delete(@PathVariable Long id) {
         return ResponseEntity.ok(storyService.delete(id));
     }

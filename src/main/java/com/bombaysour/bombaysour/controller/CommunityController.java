@@ -65,7 +65,7 @@ public class CommunityController {
                 .ok(map(communityService.update(map(community, Community.class)), CommunityDto.class));
     }
 
-    @DeleteMapping("/delete/{id}")
+    @GetMapping("/delete/{id}")
     private ResponseEntity<Boolean> delete(@PathVariable Long id) {
         return ResponseEntity.ok(communityService.delete(id));
     }
