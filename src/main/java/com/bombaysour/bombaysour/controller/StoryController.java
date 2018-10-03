@@ -1,7 +1,7 @@
 package com.bombaysour.bombaysour.controller;
 
-import com.bombaysour.bombaysour.dto.FilmDto;
-import com.bombaysour.bombaysour.service.FilmService;
+import com.bombaysour.bombaysour.dto.StoryDto;
+import com.bombaysour.bombaysour.service.StoryService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,68 +16,70 @@ import static com.bombaysour.bombaysour.dto.utils.builder.Builder.map;
 
 
 @RestController
-@RequestMapping("/film")
-public class FilmController {
+@RequestMapping("/story")
+public class StoryController {
 
     private static final Logger LOGGER = Logger.getLogger(FilmController.class);
 
     @Autowired
-    private FilmService filmService;
+    private StoryService storyService;
+
 
     @GetMapping("/find-all")
-    private ResponseEntity<List<FilmDto>> findAll() {
-        return new ResponseEntity<>(filmService.findAll().stream()
-                .map(film -> map(film, FilmDto.class))
+    private ResponseEntity<List<StoryDto>> findAll() {
+        return new ResponseEntity<>(storyService.findAll().stream()
+                .map(story -> map(story, StoryDto.class))
                 .collect(Collectors.toList()), HttpStatus.OK);
     }
 
     @GetMapping("/find-all-available")
-    private ResponseEntity<List<FilmDto>> findAllAvailable() {
-        return new ResponseEntity<>(filmService.findAllAvailable().stream()
-                .map(film -> map(film, FilmDto.class))
+    private ResponseEntity<List<StoryDto>> findAllAvailable() {
+        return new ResponseEntity<>(storyService.findAllAvailable().stream()
+                .map(story -> map(story, StoryDto.class))
                 .collect(Collectors.toList()), HttpStatus.OK);
     }
 
     @GetMapping("/find-one-available/{id}")
-    private ResponseEntity<FilmDto> findOneAvailale(@PathVariable Long id) {
-        return new ResponseEntity<>(map(filmService
-                .findOneAvailable(id), FilmDto.class), HttpStatus.OK);
+    private ResponseEntity<StoryDto> findOneAvailale(@PathVariable Long id) {
+        return new ResponseEntity<>(map(storyService
+                .findOneAvailable(id), StoryDto.class), HttpStatus.OK);
     }
 
     @GetMapping("/find-one/{id}")
-    private ResponseEntity<FilmDto> findOne(@PathVariable Long id) {
-        return new ResponseEntity<>(map(filmService
-                .findOne(id), FilmDto.class), HttpStatus.OK);
+    private ResponseEntity<StoryDto> findOne(@PathVariable Long id) {
+        return new ResponseEntity<>(map(storyService
+                .findOne(id), StoryDto.class), HttpStatus.OK);
     }
 
     @PostMapping("/save")
-    private ResponseEntity<FilmDto> save(@RequestParam String filmJson,
+    private ResponseEntity<StoryDto> save(@RequestParam String storyJson,
                                          @RequestParam(required = false) MultipartFile multipartFile) {
         LOGGER.info("---------------------------Film---------------------------");
-        LOGGER.info(filmJson);
+        LOGGER.info(storyJson);
         LOGGER.info(multipartFile);
         LOGGER.info("---------------------------Film---------------------------");
-        return ResponseEntity.ok(map(filmService.save(filmJson, multipartFile), FilmDto.class));
+        return ResponseEntity.ok(map(storyService.save(storyJson, multipartFile), StoryDto.class));
     }
 
     @PostMapping("/update")
-    private ResponseEntity<FilmDto> update(@RequestParam String filmJson,
-                                           @RequestParam(required = false) MultipartFile multipartFile) {
+    private ResponseEntity<StoryDto> update(@RequestParam String storyJson,
+                                            @RequestParam(required = false) MultipartFile multipartFile) {
         LOGGER.info("---------------------------Film---------------------------");
-        LOGGER.info(filmJson);
+        LOGGER.info(storyJson);
         LOGGER.info(multipartFile);
         LOGGER.info("---------------------------Film---------------------------");
         if (multipartFile != null && !multipartFile.isEmpty()) {
             LOGGER.info("multipart file not null");
-            return ResponseEntity.ok(map(filmService.update(filmJson, multipartFile), FilmDto.class));
+            return ResponseEntity.ok(map(storyService.update(storyJson, multipartFile), StoryDto.class));
         } else {
             LOGGER.info("multipart file is null!");
-            return ResponseEntity.ok(map(filmService.update(filmJson), FilmDto.class));
+            return ResponseEntity.ok(map(storyService.update(storyJson), StoryDto.class));
         }
     }
 
     @DeleteMapping("/delete/{id}")
     private ResponseEntity<Boolean> delete(@PathVariable Long id) {
-        return ResponseEntity.ok(filmService.delete(id));
+        return ResponseEntity.ok(storyService.delete(id));
     }
+
 }
