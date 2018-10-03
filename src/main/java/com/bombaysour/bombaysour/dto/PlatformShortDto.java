@@ -3,21 +3,21 @@ package com.bombaysour.bombaysour.dto;
 import com.bombaysour.bombaysour.dto.utils.annotations.Dto;
 
 @Dto
-public class PlatformDto {
+public class PlatformShortDto {
 
     protected Long id;
     protected Boolean available;
 //    protected String image;
     protected String text;
 
-    public PlatformDto() {
+    public PlatformShortDto() {
     }
 
     public Long getId() {
         return id;
     }
 
-    public PlatformDto setId(Long id) {
+    public PlatformShortDto setId(Long id) {
         this.id = id;
         return this;
     }
@@ -26,7 +26,7 @@ public class PlatformDto {
         return available;
     }
 
-    public PlatformDto setAvailable(Boolean available) {
+    public PlatformShortDto setAvailable(Boolean available) {
         this.available = available;
         return this;
     }
@@ -35,7 +35,7 @@ public class PlatformDto {
 //        return image;
 //    }
 //
-//    public PlatformDto setImage(String image) {
+//    public PlatformShortDto setImage(String image) {
 //        this.image = image;
 //        return this;
 //    }
@@ -44,14 +44,14 @@ public class PlatformDto {
         return text;
     }
 
-    public PlatformDto setText(String text) {
+    public PlatformShortDto setText(String text) {
         this.text = text;
         return this;
     }
 
     @Override
     public String toString() {
-        return "PlatformDto{" +
+        return "PlatformShortDto{" +
                 "id=" + id +
                 ", available=" + available +
 //                ", image='" + image + '\'' +
