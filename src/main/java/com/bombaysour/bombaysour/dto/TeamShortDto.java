@@ -8,6 +8,7 @@ public class TeamShortDto {
     protected Long id;
     protected Boolean available;
     protected String name;
+    protected String biography;
 //    protected String image;
 
     public TeamShortDto() {
@@ -49,13 +50,23 @@ public class TeamShortDto {
 //        return this;
 //    }
 
+
+    public String getBiography() {
+        return biography;
+    }
+
+    public TeamShortDto setBiography(String biography) {
+        this.biography = biography;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "TeamShortDto{" +
                 "id=" + id +
                 ", available=" + available +
                 ", name='" + name + '\'' +
-//                ", image='" + image + '\'' +
+                ", biography='" + biography + '\'' +
                 '}';
     }
 }

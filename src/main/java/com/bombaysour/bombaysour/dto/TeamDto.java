@@ -9,6 +9,8 @@ public class TeamDto {
     protected Boolean available;
     protected String name;
     protected String image;
+    private String biography;
+
 
     public TeamDto() {
     }
@@ -49,13 +51,23 @@ public class TeamDto {
         return this;
     }
 
+    public String getBiography() {
+        return biography;
+    }
+
+    public TeamDto setBiography(String biography) {
+        this.biography = biography;
+        return this;
+    }
+
     @Override
     public String toString() {
-        return "TeamShortDto{" +
+        return "TeamDto{" +
                 "id=" + id +
                 ", available=" + available +
                 ", name='" + name + '\'' +
                 ", image='" + image + '\'' +
+                ", biography='" + biography + '\'' +
                 '}';
     }
 }
