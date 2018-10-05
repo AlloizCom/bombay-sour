@@ -11,6 +11,9 @@ public class Community extends BaseEntity<Community>{
     @Column(columnDefinition = "LONGTEXT")
     private String text;
 
+    @Column(columnDefinition = "LONGTEXT")
+    private String image;
+
     public Community() {
     }
 
@@ -32,11 +35,21 @@ public class Community extends BaseEntity<Community>{
         return this;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public Community setImage(String image) {
+        this.image = image;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "Community{" +
                 "articleTitle='" + articleTitle + '\'' +
                 ", text='" + text + '\'' +
+                ", image='" + image + '\'' +
                 ", id=" + id +
                 ", available=" + available +
                 '}';
