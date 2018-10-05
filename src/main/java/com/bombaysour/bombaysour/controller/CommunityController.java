@@ -1,12 +1,11 @@
 package com.bombaysour.bombaysour.controller;
 
 import com.bombaysour.bombaysour.controller.exceptions.ImageIsNotAvailableException;
-import com.bombaysour.bombaysour.dto.CommunityDto;
+import com.bombaysour.bombaysour.dto.CommunityShortDto;
 import com.bombaysour.bombaysour.model.Community;
 import com.bombaysour.bombaysour.repository.CommunityRepository;
 import com.bombaysour.bombaysour.service.CommunityService;
 import org.apache.log4j.Logger;
-import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -44,46 +43,46 @@ public class CommunityController {
     }
 
     @GetMapping("/find-all")
-    private ResponseEntity<List<CommunityDto>> findAll() {
+    private ResponseEntity<List<CommunityShortDto>> findAll() {
         return ResponseEntity.ok(communityService.findAll().stream()
-                .map(community -> map(community, CommunityDto.class))
+                .map(community -> map(community, CommunityShortDto.class))
                 .collect(Collectors.toList()));
     }
 
     @GetMapping("/find-all-available")
-    private ResponseEntity<List<CommunityDto>> findAllAvailable() {
+    private ResponseEntity<List<CommunityShortDto>> findAllAvailable() {
         return ResponseEntity.ok(communityService.findAllAvailable().stream()
-                .map(community -> map(community, CommunityDto.class))
+                .map(community -> map(community, CommunityShortDto.class))
                 .collect(Collectors.toList()));
     }
 
     @GetMapping("/find-one-available/{id}")
-    private ResponseEntity<CommunityDto> findOneAvailale(@PathVariable Long id) {
+    private ResponseEntity<CommunityShortDto> findOneAvailale(@PathVariable Long id) {
         return ResponseEntity.ok(map(communityService
-                .findOneAvailable(id), CommunityDto.class));
+                .findOneAvailable(id), CommunityShortDto.class));
     }
 
     @GetMapping("/find-one/{id}")
-    private ResponseEntity<CommunityDto> findOne(@PathVariable Long id) {
-        return ResponseEntity.ok(map(communityService.findOne(id), CommunityDto.class));
+    private ResponseEntity<CommunityShortDto> findOne(@PathVariable Long id) {
+        return ResponseEntity.ok(map(communityService.findOne(id), CommunityShortDto.class));
     }
 
     @PostMapping("/save")
-    private ResponseEntity<CommunityDto> save(@RequestBody CommunityDto community) {
+    private ResponseEntity<CommunityShortDto> save(@RequestBody CommunityShortDto community) {
         LOGGER.info("---------------------------Community---------------------------");
         LOGGER.info(community);
         LOGGER.info("---------------------------Community---------------------------");
         return ResponseEntity
-                .ok(map(communityService.save(map(community, Community.class)), CommunityDto.class));
+                .ok(map(communityService.save(map(community, Community.class)), CommunityShortDto.class));
     }
 
     @PostMapping("/update")
-    private ResponseEntity<CommunityDto> update(@RequestBody CommunityDto community) {
+    private ResponseEntity<CommunityShortDto> update(@RequestBody CommunityShortDto community) {
         LOGGER.info("---------------------------Community---------------------------");
         LOGGER.info(community);
         LOGGER.info("---------------------------Community---------------------------");
         return ResponseEntity
-                .ok(map(communityService.update(map(community, Community.class)), CommunityDto.class));
+                .ok(map(communityService.update(map(community, Community.class)), CommunityShortDto.class));
     }
 
     @GetMapping("/delete/{id}")

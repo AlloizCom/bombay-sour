@@ -1,10 +1,8 @@
 package com.bombaysour.bombaysour.controller;
 
 import com.bombaysour.bombaysour.controller.exceptions.ImageIsNotAvailableException;
-import com.bombaysour.bombaysour.dto.CommunityDto;
 import com.bombaysour.bombaysour.dto.PlatformDto;
 import com.bombaysour.bombaysour.dto.PlatformShortDto;
-import com.bombaysour.bombaysour.model.Community;
 import com.bombaysour.bombaysour.model.Platform;
 import com.bombaysour.bombaysour.repository.PlatformRepository;
 import com.bombaysour.bombaysour.service.PlatformService;
@@ -13,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
