@@ -1,6 +1,7 @@
 package com.bombaysour.bombaysour.controller;
 
 import com.bombaysour.bombaysour.controller.exceptions.ImageIsNotAvailableException;
+import com.bombaysour.bombaysour.dto.CommunityDto;
 import com.bombaysour.bombaysour.dto.CommunityShortDto;
 import com.bombaysour.bombaysour.model.Community;
 import com.bombaysour.bombaysour.repository.CommunityRepository;
@@ -68,21 +69,21 @@ public class CommunityController {
     }
 
     @PostMapping("/save")
-    private ResponseEntity<CommunityShortDto> save(@RequestBody CommunityShortDto community) {
+    private ResponseEntity<CommunityDto> save(@RequestBody CommunityDto community) {
         LOGGER.info("---------------------------Community---------------------------");
         LOGGER.info(community);
         LOGGER.info("---------------------------Community---------------------------");
         return ResponseEntity
-                .ok(map(communityService.save(map(community, Community.class)), CommunityShortDto.class));
+                .ok(map(communityService.save(map(community, Community.class)), CommunityDto.class));
     }
 
     @PostMapping("/update")
-    private ResponseEntity<CommunityShortDto> update(@RequestBody CommunityShortDto community) {
+    private ResponseEntity<CommunityDto> update(@RequestBody CommunityDto community) {
         LOGGER.info("---------------------------Community---------------------------");
         LOGGER.info(community);
         LOGGER.info("---------------------------Community---------------------------");
         return ResponseEntity
-                .ok(map(communityService.update(map(community, Community.class)), CommunityShortDto.class));
+                .ok(map(communityService.update(map(community, Community.class)), CommunityDto.class));
     }
 
     @GetMapping("/delete/{id}")
