@@ -102,6 +102,7 @@ public class PlatformServiceImpl implements PlatformService {
         LOGGER.info("------------------------");
         return save(platformRepository.findOne(platform.getId())
                 .setText(platform.getText())
+                .setImage(platform.getImage())
                 .setAvailable(platform.getAvailable())
         );
     }

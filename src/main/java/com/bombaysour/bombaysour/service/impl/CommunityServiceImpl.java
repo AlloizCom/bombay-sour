@@ -63,6 +63,7 @@ public class CommunityServiceImpl implements CommunityService {
         return communityRepository.save(findOne(community.getId())
                 .setArticleTitle(community.getArticleTitle())
                 .setText(community.getText())
+                .setImage(community.getImage())
                 .setAvailable(community.getAvailable()));
     }
 

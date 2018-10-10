@@ -104,6 +104,7 @@ public class TeamServiceImpl implements TeamService {
         return save(teamRepository.findOne(team.getId())
                 .setBiography(team.getBiography())
                 .setName(team.getName())
+                .setImage(team.getImage())
                 .setAvailable(team.getAvailable())
         );
     }
