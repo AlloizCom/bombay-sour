@@ -54,20 +54,20 @@ public class StoryController {
     @PostMapping("/save")
     private ResponseEntity<StoryDto> save(@RequestParam String storyJson,
                                          @RequestParam(required = false) MultipartFile multipartFile) {
-        LOGGER.info("---------------------------Film---------------------------");
+        LOGGER.info("---------------------------Story---------------------------");
         LOGGER.info(storyJson);
         LOGGER.info(multipartFile);
-        LOGGER.info("---------------------------Film---------------------------");
+        LOGGER.info("---------------------------Story---------------------------");
         return ResponseEntity.ok(map(storyService.save(storyJson, multipartFile), StoryDto.class));
     }
 
     @PostMapping("/update")
     private ResponseEntity<StoryDto> update(@RequestParam String storyJson,
                                             @RequestParam(required = false) MultipartFile multipartFile) {
-        LOGGER.info("---------------------------Film---------------------------");
+        LOGGER.info("---------------------------Story---------------------------");
         LOGGER.info(storyJson);
         LOGGER.info(multipartFile);
-        LOGGER.info("---------------------------Film---------------------------");
+        LOGGER.info("---------------------------Story---------------------------");
         if (multipartFile != null && !multipartFile.isEmpty()) {
             LOGGER.info("multipart file not null");
             return ResponseEntity.ok(map(storyService.update(storyJson, multipartFile), StoryDto.class));

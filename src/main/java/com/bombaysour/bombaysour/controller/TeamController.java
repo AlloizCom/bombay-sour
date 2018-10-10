@@ -99,18 +99,18 @@ public class TeamController {
 
     @PostMapping("/save")
     private ResponseEntity<TeamDto> save(@RequestBody TeamDto teamJson) {
-        LOGGER.info("---------------------------Platform---------------------------");
+        LOGGER.info("---------------------------Team---------------------------");
         LOGGER.info(teamJson);
-        LOGGER.info("---------------------------Platform---------------------------");
+        LOGGER.info("---------------------------Team---------------------------");
         return ResponseEntity
                 .ok(map(teamService.save(map(teamJson, Team.class)), TeamDto.class));
     }
 
     @PostMapping("/update")
     private ResponseEntity<TeamDto> update(@RequestBody TeamDto team) {
-        LOGGER.info("---------------------------Community---------------------------");
+        LOGGER.info("---------------------------Team---------------------------");
         LOGGER.info(team);
-        LOGGER.info("---------------------------Community---------------------------");
+        LOGGER.info("---------------------------Team---------------------------");
         return ResponseEntity
                 .ok(map(teamService.update(map(team, Team.class)), TeamDto.class));
     }
