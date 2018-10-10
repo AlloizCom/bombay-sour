@@ -90,6 +90,7 @@ public class StoryServiceImpl implements StoryService {
             story.setVideoUrl(fileBuilder.saveFile(multipartFile));
         return save(storyRepository.findOne(story.getId())
                 .setName(story.getName())
+                .setVideoUrl(story.getVideoUrl())
                 .setAvailable(story.getAvailable())
         );
     }

@@ -88,6 +88,7 @@ public class FilmServiceImpl implements FilmService {
             film.setVideoUrl(fileBuilder.saveFile(multipartFile));
         return save(filmRepository.findOne(film.getId())
                 .setDirector(film.getDirector())
+                .setVideoUrl(film.getVideoUrl())
                 .setFilmTitle(film.getFilmTitle())
                 .setAvailable(film.getAvailable())
         );
