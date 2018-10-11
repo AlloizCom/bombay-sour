@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 import static com.bombaysour.bombaysour.dto.utils.builder.Builder.map;
 
-
+@CrossOrigin
 @RestController
 @RequestMapping("/film")
 public class FilmController {

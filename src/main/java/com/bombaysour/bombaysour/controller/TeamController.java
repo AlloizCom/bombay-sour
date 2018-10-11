@@ -20,6 +20,7 @@ import java.util.stream.Collectors;
 import static com.bombaysour.bombaysour.dto.utils.builder.Builder.map;
 import static org.springframework.http.CacheControl.maxAge;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/team")
 public class TeamController {
