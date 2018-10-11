@@ -39,7 +39,7 @@ public class CommunityController {
         } catch (Exception e){
             throw new ImageIsNotAvailableException("Image for this cpmmunity is not available. Team id: " + id);
         }
-        return ResponseEntity.ok().cacheControl(maxAge(31556926, TimeUnit.SECONDS)
+        return ResponseEntity.ok().cacheControl(maxAge(2, TimeUnit.DAYS)
                 .cachePublic())
                 .body(image);
     }

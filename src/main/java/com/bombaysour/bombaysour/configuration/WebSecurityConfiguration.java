@@ -36,7 +36,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                .antMatchers("/login").permitAll()
 //                .antMatchers("/").permitAll()
                 .anyRequest().permitAll()
-        .and().headers().cacheControl().disable();
+        .and().headers().cacheControl().disable().and().cors();
     }
 
     @Autowired
