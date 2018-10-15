@@ -15,7 +15,7 @@ public interface FilmRepository extends JpaRepository<Film, Long> {
 
     Film findByAvailableAndId(Boolean available, Long id);
 
-    @Query("select f.poster from Film f where f.id=id")
+    @Query("select f.poster from Film f where f.id=:id")
     String getImage(@Param("id") Long id);
 
 }

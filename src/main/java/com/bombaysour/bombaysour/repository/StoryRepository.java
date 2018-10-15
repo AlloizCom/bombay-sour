@@ -16,7 +16,7 @@ public interface StoryRepository extends JpaRepository<Story,Long> {
     Story findByAvailableAndId(Boolean available, Long id);
 
 
-    @Query("select f.poster from Story f where f.id=id")
+    @Query("select f.poster from Story f where f.id=:id")
     String getImage(@Param("id") Long id);
 
 }
