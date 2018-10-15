@@ -7,6 +7,7 @@ public class Story extends BaseEntity<Story>{
 
     private String name;
     private String videoUrl;
+    private String poster;
 
     public Story() {
     }
@@ -37,5 +38,14 @@ public class Story extends BaseEntity<Story>{
                 ", id=" + id +
                 ", available=" + available +
                 '}';
+    }
+
+    public String getPoster() {
+        return poster;
+    }
+
+    public Story setPoster(String poster) {
+        this.poster = poster;
+        return this;
     }
 }

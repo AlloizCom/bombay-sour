@@ -1,5 +1,6 @@
 package com.bombaysour.bombaysour.controller;
 
+import com.bombaysour.bombaysour.controller.exceptions.ImageIsNotAvailableException;
 import com.bombaysour.bombaysour.dto.StoryDto;
 import com.bombaysour.bombaysour.service.StoryService;
 import org.apache.log4j.Logger;
@@ -10,9 +11,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 import static com.bombaysour.bombaysour.dto.utils.builder.Builder.map;
+import static org.springframework.http.CacheControl.maxAge;
 
 @CrossOrigin
 @RestController
@@ -24,6 +27,19 @@ public class StoryController {
     @Autowired
     private StoryService storyService;
 
+
+    @GetMapping(value = "/get-image/{id}",produces = "text/plain")
+    private ResponseEntity<String> getMainImage(@PathVariable Long id) {
+        String image = "";
+        try {
+            image = storyService.getImage(id);
+        } catch (Exception e){
+            throw new ImageIsNotAvailableException("Image for this story is not available. Team id: " + id);
+        }
+        return ResponseEntity.ok().cacheControl(maxAge(2, TimeUnit.DAYS)
+                .cachePublic())
+                .body(image);
+    }
 
     @GetMapping("/find-all")
     private ResponseEntity<List<StoryDto>> findAll() {

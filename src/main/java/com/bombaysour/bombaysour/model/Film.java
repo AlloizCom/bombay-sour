@@ -8,6 +8,7 @@ public class Film extends BaseEntity<Film>{
     private String filmTitle;
     private String videoUrl;
     private String director;
+    private String poster;
 
     public Film() {
     }
@@ -48,5 +49,14 @@ public class Film extends BaseEntity<Film>{
                 ", id=" + id +
                 ", available=" + available +
                 '}';
+    }
+
+    public String getPoster() {
+        return poster;
+    }
+
+    public Film setPoster(String poster) {
+        this.poster = poster;
+        return this;
     }
 }

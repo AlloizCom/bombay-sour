@@ -28,4 +28,6 @@ public interface FilmService {
     Film update(String filmJson);
 
     Boolean delete(Long id);
+
+    String getImage(Long id);
 }

@@ -87,6 +87,7 @@ public class FilmServiceImpl implements FilmService {
         if (multipartFile != null && !multipartFile.isEmpty())
             film.setVideoUrl(fileBuilder.saveFile(multipartFile));
         return save(filmRepository.findOne(film.getId())
+                .setPoster(film.getPoster())
                 .setDirector(film.getDirector())
                 .setVideoUrl(film.getVideoUrl())
                 .setFilmTitle(film.getFilmTitle())
@@ -101,6 +102,7 @@ public class FilmServiceImpl implements FilmService {
         LOGGER.info(film);
         LOGGER.info("--------------------");
         return save(filmRepository.findOne(film.getId())
+                .setPoster(film.getPoster())
                 .setDirector(film.getDirector())
                 .setFilmTitle(film.getFilmTitle())
                 .setAvailable(film.getAvailable())
@@ -124,4 +126,8 @@ public class FilmServiceImpl implements FilmService {
         }
     }
 
+    @Override
+    public String getImage(Long id) {
+        return filmRepository.getImage(id);
+    }
 }

@@ -28,4 +28,6 @@ public interface StoryService {
     Story update(String storyJson);
 
     Boolean delete(Long id);
+
+    String getImage(Long id);
 }
