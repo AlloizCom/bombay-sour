@@ -1,5 +1,6 @@
 package com.bombaysour.bombaysour.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
 @Entity
@@ -7,6 +8,7 @@ public class Story extends BaseEntity<Story>{
 
     private String name;
     private String videoUrl;
+    @Column(columnDefinition = "LONGTEXT")
     private String poster;
 
     public Story() {
