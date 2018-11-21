@@ -10,7 +10,6 @@ public class FilmDto {
     protected String filmTitle;
     protected String videoUrl;
     protected String director;
-    protected String poster;
 
 
     public FilmDto() {
@@ -61,14 +60,6 @@ public class FilmDto {
         return this;
     }
 
-    public String getPoster() {
-        return poster;
-    }
-
-    public FilmDto setPoster(String poster) {
-        this.poster = poster;
-        return this;
-    }
 
     @Override
     public String toString() {
