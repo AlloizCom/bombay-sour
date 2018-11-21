@@ -40,7 +40,7 @@ public class PlatformController {
         } catch (Exception e){
             throw new ImageIsNotAvailableException("Image for this platform is not available. Platform id: " + id);
         }
-        return ResponseEntity.ok().cacheControl(maxAge(2, TimeUnit.DAYS)
+        return ResponseEntity.ok().cacheControl(maxAge(2, TimeUnit.MICROSECONDS)
                 .cachePublic())
                 .body(image);
     }

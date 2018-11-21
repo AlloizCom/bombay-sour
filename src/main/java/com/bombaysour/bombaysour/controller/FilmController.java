@@ -35,7 +35,7 @@ public class FilmController {
         } catch (Exception e){
             throw new ImageIsNotAvailableException("Image for this film is not available. Team id: " + id);
         }
-        return ResponseEntity.ok().cacheControl(maxAge(2, TimeUnit.DAYS)
+        return ResponseEntity.ok().cacheControl(maxAge(2, TimeUnit.MICROSECONDS)
                 .cachePublic())
                 .body(image);
     }

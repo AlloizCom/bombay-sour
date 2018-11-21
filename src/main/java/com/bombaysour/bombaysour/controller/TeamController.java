@@ -41,7 +41,7 @@ public class TeamController {
         } catch (Exception e){
             throw new ImageIsNotAvailableException("Image for this team is not available. Team id: " + id);
         }
-        return ResponseEntity.ok().cacheControl(maxAge(2, TimeUnit.DAYS)
+        return ResponseEntity.ok().cacheControl(maxAge(2, TimeUnit.MICROSECONDS)
                 .cachePublic())
                 .body(image);
     }
