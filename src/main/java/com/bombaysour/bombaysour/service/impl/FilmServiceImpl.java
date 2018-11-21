@@ -101,6 +101,11 @@ public class FilmServiceImpl implements FilmService {
         LOGGER.info("----FILM--UPDATE----");
         LOGGER.info(film);
         LOGGER.info("--------------------");
+        LOGGER.info("--------------------");
+        LOGGER.info(film.getPoster().equals(filmRepository.getImage(film.getId())));
+        LOGGER.info("--------------------");
+        LOGGER.info("--------------------");
+        LOGGER.info("--------------------");
         return save(filmRepository.findOne(film.getId())
                 .setPoster(film.getPoster())
                 .setDirector(film.getDirector())

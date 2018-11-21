@@ -48,6 +48,7 @@ public class Film extends BaseEntity<Film>{
                 "filmTitle='" + filmTitle + '\'' +
                 ", videoUrl='" + videoUrl + '\'' +
                 ", director='" + director + '\'' +
+                ", poster='" + poster + '\'' +
                 ", id=" + id +
                 ", available=" + available +
                 '}';
