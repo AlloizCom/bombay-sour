@@ -10,6 +10,8 @@ public class FilmDto {
     protected String filmTitle;
     protected String videoUrl;
     protected String director;
+    protected String poster;
+
 
     public FilmDto() {
     }
@@ -56,6 +58,15 @@ public class FilmDto {
 
     public FilmDto setDirector(String director) {
         this.director = director;
+        return this;
+    }
+
+    public String getPoster() {
+        return poster;
+    }
+
+    public FilmDto setPoster(String poster) {
+        this.poster = poster;
         return this;
     }
 
